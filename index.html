@@ -3,30 +3,231 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Racket Sports</title>
-<meta name="description" content="Keep score of padel, tennis, table tennis, pickleball, badminton and squash on your Apple Watch.">
+<title>Racket Sports – Score padel, tennis & more on your watch</title>
+<meta name="description" content="Keep score of padel, tennis, table tennis, pickleball, badminton and squash on your Apple Watch or Garmin watch, by the official rules. No account, no server, no tracking.">
+<meta name="apple-itunes-app" content="app-id=6834806883">
+<meta property="og:title" content="Racket Sports">
+<meta property="og:description" content="Keep score on your wrist: padel, tennis, table tennis, pickleball, badminton and squash, by the official rules.">
+<meta property="og:image" content="https://raphioriginal.github.io/racket-sports-site/img/iphone-6.3-00-home.jpg">
+<link rel="icon" href="img/icon.svg" type="image/svg+xml">
 <style>
-:root{color-scheme:light dark;--bg:#f2f5fa;--card:#fff;--text:#12202e;--muted:#55606c;--accent:#12609f}
+:root{color-scheme:light dark;--bg:#f2f5fa;--card:#fff;--text:#12202e;--muted:#55606c;--accent:#12609f;--green:#34c759;--purple:#cb30e0;--line:color-mix(in srgb,var(--muted) 22%,transparent)}
 @media (prefers-color-scheme:dark){:root{--bg:#0e141b;--card:#18212b;--text:#eef2f6;--muted:#a3adb8;--accent:#6fb3ec}}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:17px/1.55 -apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif}
-main{max-width:720px;margin:0 auto;padding:32px 16px 64px}h1{font-size:2rem;line-height:1.2;margin:0 0 4px}h2{font-size:1.25rem;margin:32px 0 8px;color:var(--accent)}
-p,li{margin:0 0 12px}a{color:var(--accent)}nav{font-size:.95rem;margin-bottom:28px}nav a{margin-right:16px}.muted{color:var(--muted)}
-.card{background:var(--card);border-radius:20px;padding:20px;margin:20px 0}hr{border:0;border-top:1px solid color-mix(in srgb,var(--muted) 35%,transparent);margin:40px 0}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font:17px/1.55 -apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif}
+a{color:var(--accent)}img{display:block;max-width:100%}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+h1,h2,h3{line-height:1.15;margin:0}h2{font-size:clamp(1.6rem,3.5vw,2.2rem);letter-spacing:-.01em}h3{font-size:1.1rem;margin-bottom:6px}
+p{margin:0 0 12px}.muted{color:var(--muted)}
+section{padding:56px 0}.lead{max-width:620px;margin:10px 0 28px}
+
+/* Header */
+header{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:saturate(1.6) blur(14px);-webkit-backdrop-filter:saturate(1.6) blur(14px);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;gap:20px;height:56px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:650;color:var(--text);text-decoration:none;margin-right:auto}
+.brand img{width:30px;height:30px}
+header nav a{font-size:.95rem;text-decoration:none;color:var(--muted)}header nav a:hover{color:var(--text)}
+header nav{display:flex;gap:20px}
+@media (max-width:560px){header nav a:not(.cta){display:none}}
+header nav a.cta{color:var(--accent);font-weight:600}
+
+/* Hero */
+.hero{padding:64px 0 40px;overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center}
+@media (max-width:820px){.hero{padding-top:36px}.hero .wrap{grid-template-columns:1fr}.hero-art{min-height:0;transform:scale(.8);margin:-30px 0}.app-icon{width:64px;height:64px;margin-bottom:16px}}
+.app-icon{width:84px;height:84px;margin-bottom:22px;filter:drop-shadow(0 10px 24px rgba(203,48,224,.35))}
+.hero h1{font-size:clamp(2.4rem,6vw,3.6rem);letter-spacing:-.02em}
+.grad{background:linear-gradient(100deg,var(--green),var(--purple));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero .lead{font-size:1.2rem;color:var(--muted)}
+.stores{display:flex;flex-wrap:wrap;align-items:center;gap:12px}
+.apple-badge,.ciq-badge{display:inline-block}.apple-badge img{height:56px;width:auto}.ciq-badge img{height:60px;width:auto}
+.dl .apple-badge img{height:40px}.dl .ciq-badge img{height:43px}
+.store{display:inline-flex;flex-direction:column;justify-content:center;min-width:176px;height:56px;padding:0 18px;border-radius:14px;background:var(--text);color:var(--bg);text-decoration:none;line-height:1.2}
+.store small{font-size:.72rem;opacity:.75}.store b{font-size:1.1rem}
+.store.soon{background:transparent;color:var(--muted);border:1.5px dashed var(--line);border-color:color-mix(in srgb,var(--muted) 45%,transparent)}
+.badges{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:22px;font-size:.92rem;color:var(--muted)}
+.badges span::before{content:"✓ ";color:var(--green);font-weight:700}
+.hero-art{position:relative;display:flex;justify-content:center;align-items:flex-end;min-height:360px}
+.hero-art::before{content:"";position:absolute;inset:10% 5% 0;background:radial-gradient(closest-side,color-mix(in srgb,var(--green) 40%,transparent),transparent),radial-gradient(closest-side at 70% 60%,color-mix(in srgb,var(--purple) 40%,transparent),transparent);filter:blur(30px)}
+.phone{position:relative;width:200px;border-radius:34px;border:7px solid #10151b;overflow:hidden;background:#10151b;box-shadow:0 30px 60px rgba(0,0,0,.25)}
+.watch{position:relative;width:170px;margin:0 -40px 30px 0;z-index:1;border-radius:46px;border:12px solid #10151b;overflow:hidden;background:#000;box-shadow:0 24px 50px rgba(0,0,0,.35)}
+.watch img{border-radius:30px}
+
+/* Sports */
+.sports{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
+.sport{background:var(--card);border-radius:18px;padding:16px 18px}
+.sport b{display:block;font-size:1.05rem}.sport span{font-size:.88rem;color:var(--muted)}
+
+/* Features */
+.features{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:16px}
+.card{background:var(--card);border-radius:20px;padding:22px}
+.card p{color:var(--muted);margin:0}
+.dot{width:36px;height:36px;border-radius:11px;display:grid;place-items:center;margin-bottom:14px;color:#fff;font-size:1.1rem;background:linear-gradient(135deg,var(--green),var(--purple))}
+
+/* Screenshots */
+.shots{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding:6px 20px 18px;margin:0 -20px;scrollbar-width:thin}
+.shots figure{margin:0;flex:0 0 auto;scroll-snap-align:center;text-align:center}
+.shots figure img{width:220px;border-radius:30px;border:6px solid #10151b;background:#10151b}
+.shots figure.w img{width:180px;border-radius:40px;border-width:11px;background:#000}
+.shots figcaption{font-size:.88rem;color:var(--muted);margin-top:10px}
+
+/* Pricing */
+.prices{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}
+.prices .card b{font-size:1.2rem;display:block;margin-bottom:4px}
+
+/* Download */
+.download{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+.dl{display:flex;gap:18px;align-items:center}
+.qr{width:132px;height:132px;flex:0 0 auto;padding:8px;background:#fff;border-radius:14px}
+.dl h3{margin-bottom:2px}.dl p{font-size:.92rem;margin-bottom:10px}
+.dl a.btn{font-weight:600;text-decoration:none}
+@media (max-width:640px){.qr{display:none}}
+.soon-card{border:1.5px dashed color-mix(in srgb,var(--muted) 45%,transparent);background:transparent}
+
+/* Help */
+.links{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px}
+.links a{display:block;background:var(--card);border-radius:18px;padding:16px 18px;text-decoration:none;color:var(--text)}
+.links a:hover{outline:2px solid color-mix(in srgb,var(--accent) 50%,transparent)}
+.links a span{display:block;font-size:.88rem;color:var(--muted);margin-top:2px}
+.links a b::after{content:" →";color:var(--accent)}
+
+footer{border-top:1px solid var(--line);padding:28px 0 48px;font-size:.9rem;color:var(--muted)}
+footer .wrap{display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-between}
+footer a{color:var(--muted)}
 </style>
 </head>
 <body>
+<header>
+  <div class="wrap">
+    <a class="brand" href="./"><img src="img/icon.svg" alt="">Racket Sports</a>
+    <nav>
+      <a href="#features">Features</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#help">Help</a>
+      <a class="cta" href="#download">Download</a>
+    </nav>
+  </div>
+</header>
+
 <main>
-<nav><a href="./">Racket Sports</a><a href="support/">Support</a><a href="privacy/">Privacy</a></nav>
-<h1>Racket Sports</h1>
-<p class="muted">Keep score on your Apple Watch, by the official rules.</p>
-<div class="card">
-<p>Racket Sports keeps the score of your match on your Apple Watch, so you can keep your head in the game. One tap per point: the app knows the rules, who serves next, when to change ends and when the match is won.</p>
-<p>Padel, tennis, table tennis, pickleball, badminton and squash. Singles and doubles.</p>
-<p>Your iPhone keeps every finished match in one history, follows the match being counted on the watch, and shows your statistics.</p>
-<p>No account, no server, no ads, no tracking. Your matches stay on your devices.</p>
-</div>
-<p><a href="support/">Support</a> · <a href="privacy/">Privacy Policy</a> · <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Terms of Use</a></p>
-<p class="muted">© 2026 Raphael Brunner</p>
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <img class="app-icon" src="img/icon.svg" alt="The Racket Sports app icon">
+      <h1>Keep score <span class="grad">on your wrist.</span></h1>
+      <p class="lead">One tap per point. Racket Sports knows the official rules, who serves next, when to change ends and when the match is won, so you can keep your head in the game.</p>
+      <div class="stores">
+        <a class="apple-badge" href="https://apps.apple.com/us/app/racket-sports/id6834806883?itscg=30200&amp;itsct=apps_box_badge&amp;mttnsubad=6834806883"><img src="https://toolbox.marketingtools.apple.com/api/v2/badges/download-on-the-app-store/black/en-us?releaseDate=1794960000" alt="Download on the App Store" width="167" height="56"></a>
+        <a class="ciq-badge" href="https://apps.garmin.com/apps/5c7496f3-469d-4012-992a-ec46fdf84a89"><img src="img/connect-iq-badge-black.svg" alt="Available in the Garmin Connect IQ Store" width="176" height="60"></a>
+        <span class="store soon"><small>Android & Wear OS</small><b>Coming soon</b></span>
+      </div>
+      <div class="badges"><span>Apple Watch & iPhone</span><span>Garmin watches</span><span>No account</span><span>No tracking</span></div>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <div class="watch"><img src="img/watch-01-match.png" alt=""></div>
+      <div class="phone"><img src="img/iphone-6.3-00-home.jpg" alt=""></div>
+    </div>
+  </div>
+</section>
+
+<section id="sports" style="padding-top:24px">
+  <div class="wrap">
+    <h2>Six sports, by the official rules</h2>
+    <p class="lead muted">Singles and doubles, with the variants clubs and tournaments really play.</p>
+    <div class="sports">
+      <div class="sport"><b>Padel</b><span>Golden point, star point</span></div>
+      <div class="sport"><b>Tennis</b><span>Best of 3 or 5, No-Ad</span></div>
+      <div class="sport"><b>Table tennis</b><span>To 11 or 21, expedite</span></div>
+      <div class="sport"><b>Pickleball</b><span>Side-out and rally</span></div>
+      <div class="sport"><b>Badminton</b><span>3×15, 3×21, 5×11</span></div>
+      <div class="sport"><b>Squash</b><span>PAR to 11 or 15, to 9</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="features">
+  <div class="wrap">
+    <h2>Everything a match needs</h2>
+    <p class="lead muted">Count on the watch, look back on the iPhone.</p>
+    <div class="features">
+      <div class="card"><div class="dot">⌚</div><h3>Made for the wrist</h3><p>Big buttons, undo and the server always in view. Sets, games, tie-breaks and changes of ends are handled for you.</p></div>
+      <div class="card"><div class="dot">📈</div><h3>History and statistics</h3><p>Every finished match in one list on the iPhone, with the course of each match and your performance per sport.</p></div>
+      <div class="card"><div class="dot">📡</div><h3>Live on the iPhone</h3><p>Follow the match being counted on the watch from your iPhone, point by point.</p></div>
+      <div class="card"><div class="dot">❤️</div><h3>Fitness and Health</h3><p>Save a match as a workout with heart rate and calories, and see where it was played on a map.</p></div>
+      <div class="card"><div class="dot">⏸</div><h3>Pause and resume</h3><p>Rain? Pause the match and pick it up later, on the watch or on the iPhone.</p></div>
+      <div class="card"><div class="dot">🔒</div><h3>Private by design</h3><p>No account, no server, no ads, no analytics. Your matches stay on your devices.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="screens" style="padding-top:8px">
+  <div class="wrap">
+    <h2>A look inside</h2>
+    <p class="lead muted">Scroll sideways to see more.</p>
+    <div class="shots">
+      <figure class="w"><img src="img/watch-01-match.png" alt="A tennis match being counted on Apple Watch" loading="lazy"><figcaption>Counting a match</figcaption></figure>
+      <figure><img src="img/iphone-6.3-01-history.jpg" alt="The history of all matches on iPhone" loading="lazy"><figcaption>Your history</figcaption></figure>
+      <figure><img src="img/iphone-6.3-03-match-course.jpg" alt="Games per set and the momentum of a padel match" loading="lazy"><figcaption>The course of a match</figcaption></figure>
+      <figure class="w"><img src="img/watch-02-result.png" alt="The result of a match on Apple Watch" loading="lazy"><figcaption>The result</figcaption></figure>
+      <figure><img src="img/iphone-6.3-05-match-place-and-workout.jpg" alt="The place and the workout of a match" loading="lazy"><figcaption>Place and workout</figcaption></figure>
+      <figure class="w"><img src="img/watch-03-sports.png" alt="Picking a sport on Apple Watch" loading="lazy"><figcaption>Pick a sport</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section id="pricing" style="padding-top:16px">
+  <div class="wrap">
+    <h2>Start free</h2>
+    <p class="lead muted">Purchases on the iPhone unlock the Apple Watch too, and the other way round.</p>
+    <div class="prices">
+      <div class="card"><b>One sport free</b><p>Pick your sport when you first open the app and count as many matches as you like.</p></div>
+      <div class="card"><b>More sports</b><p>A one-time purchase per sport, or all of them at once.</p></div>
+      <div class="card"><b>Premium</b><p>Monthly or yearly: your performance, the match details, the Live tab, player names and matches added by hand.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="download" style="padding-top:16px">
+  <div class="wrap">
+    <h2>Download</h2>
+    <p class="lead muted">On a computer? Scan a code with your phone.</p>
+    <div class="download">
+      <div class="card dl">
+        <img class="qr" src="img/qr-app-store.svg" alt="QR code to Racket Sports on the App Store">
+        <div><h3>iPhone & Apple Watch</h3><p class="muted">iOS and watchOS, from the App Store.</p><a class="apple-badge" href="https://apps.apple.com/us/app/racket-sports/id6834806883?itscg=30200&amp;itsct=apps_box_badge&amp;mttnsubad=6834806883"><img src="https://toolbox.marketingtools.apple.com/api/v2/badges/download-on-the-app-store/black/en-us?releaseDate=1794960000" alt="Download on the App Store" width="120" height="40" loading="lazy"></a></div>
+      </div>
+      <div class="card dl">
+        <img class="qr" src="img/qr-connect-iq.svg" alt="QR code to Racket Sports in the Garmin Connect IQ Store">
+        <div><h3>Garmin watches</h3><p class="muted">All six sports. Syncs with the iPhone app.</p><a class="ciq-badge" href="https://apps.garmin.com/apps/5c7496f3-469d-4012-992a-ec46fdf84a89"><img src="img/connect-iq-badge-black.svg" alt="Available in the Garmin Connect IQ Store" width="126" height="43" loading="lazy"></a></div>
+      </div>
+      <div class="card dl soon-card">
+        <div><h3>Android & Wear OS</h3><p class="muted">On its way to Google Play.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="help" style="padding-top:16px">
+  <div class="wrap">
+    <h2>Help and legal</h2>
+    <p class="lead muted">Questions, ideas or a problem? We read every message.</p>
+    <div class="links">
+      <a href="support/"><b>Support</b><span>Answers to common questions</span></a>
+      <a href="mailto:info@racket-sports.app"><b>Contact</b><span>info@racket-sports.app</span></a>
+      <a href="privacy/"><b>Privacy Policy</b><span>iPhone, Apple Watch and Garmin</span></a>
+      <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/"><b>Terms of Use</b><span>Apple's standard license agreement</span></a>
+      <a href="privacy/android/"><b>Privacy Policy for Android</b><span>Android and Wear OS</span></a>
+      <a href="terms/android/"><b>Terms of Use for Android</b><span>Android and Wear OS</span></a>
+    </div>
+  </div>
+</section>
 </main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Raphael Brunner</span>
+    <span><a href="support/">Support</a> · <a href="privacy/">Privacy</a> · <a href="mailto:info@racket-sports.app">Contact</a></span>
+  </div>
+</footer>
 </body>
 </html>
